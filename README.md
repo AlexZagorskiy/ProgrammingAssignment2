@@ -1,3 +1,35 @@
+The program has been adapted for the purpose of Assignment 2
+the program has been tested as follows:
+
+# TEST_1 
+# generating the matrix
+xx<-matrix(c(1,2,3,4,5,6.5,7.1,8.6,1, 12, 5,7,3.5, 8.9, 3.1, 1.2), nrow=4,ncol=4)
+xx
+#cacheing functions
+yy<-makeCacheMatrix(x)
+yy$set(x)   ## setting matrix x
+yy$get()
+x
+#inversing for the first time
+x_inv<-cacheSolve(yy)
+x_inv
+#checking wheather the cache is really used, no correctnes ckeck
+cacheSolve(yy)
+#external correctness check
+# z should be very close to 0 (within the tolerance)
+z<-max(abs(x_inv%*%yy$get()-diag(dim(x)[1])))
+z
+#the same with the internal correctness check reasonable tolerance
+#should take the cache
+yy_1<-cacheSolve(yy, TRUE, prec= 1.e-9)
+yy_1
+# ... the tolerance will be now set too low, should recalculate
+yy_2<-cacheSolve(yy, TRUE, prec= 1.e-19)
+yy_2
+#
+
+
+
 ### Introduction
 
 This second programming assignment will require you to write an R
