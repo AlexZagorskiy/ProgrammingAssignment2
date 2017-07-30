@@ -59,31 +59,29 @@ cacheSolve <- function(x, corr.check=FALSE, prec=1.e-8,...) {
 }
 
 # TEST_1 
-## generating the matrix
+
 xx<-matrix(c(1,2,3,4,5,6.5,7.1,8.6,1, 12, 5,7,3.5, 8.9, 3.1, 1.2), nrow=4,ncol=4)
-xx
-##cacheing functions
-yy<-makeCacheMatrix(x)
+xx  ## generated matrix
+
+yy<-makeCacheMatrix(x) ##caching functions
 yy$set(x)   ## setting matrix x
 yy$get()
 x
-##inversing for the first time
-x_inv<-cacheSolve(yy)
+
+x_inv<-cacheSolve(yy) ##inversing for the first time
 x_inv
-##checking wheather the cache is really used, no correctnes ckeck
-cacheSolve(yy)
-##external correctness check
-## z should be very close to 0 (within the tolerance)
-z<-max(abs(x_inv%*%yy$get()-diag(dim(x)[1])))
-z
-##the same with the internal correctness check reasonable tolerance
-##should take the cache
-yy_1<-cacheSolve(yy, TRUE, prec= 1.e-9)
-yy_1
-## ... the tolerance will be now set too low, should recalculate
-yy_2<-cacheSolve(yy, TRUE, prec= 1.e-19)
+
+cacheSolve(yy)  ##checking wheather the cache is really used, no correctnes check
+
+z<-max(abs(x_inv%*%yy$get()-diag(dim(x)[1]))) ##external correctness check
+z ## z should be very close to 0 (within the tolerance)
+
+yy_1<-cacheSolve(yy, TRUE, prec= 1.e-9) ##the same with the internal correctness check
+yy_1 ##should take the cache
+
+yy_2<-cacheSolve(yy, TRUE, prec= 1.e-19) ## the tolerance will be now set low, should recalculate
 yy_2
-##
+
         
 
 
