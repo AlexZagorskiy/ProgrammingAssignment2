@@ -8,8 +8,6 @@
 ##  (if the original matrix has not been changed) and return it as a results
 ## 4.  get the data for inverting
 
-## The function cacheSolve checks the inverse for existance and 
-## inverts the matrix if the inverse one does not exist or the original has been changed 
 
 
 makeCacheMatrix <- function(x = matrix()) {
@@ -30,7 +28,8 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## Write a short comment describing this function
+## The function cacheSolve checks the inverse for existance and 
+## inverts the matrix if the inverse one does not exist or the original has been changed 
 
 cacheSolve <- function(x, corr.check=FALSE, prec=1.e-8,...) {
         ## Return a matrix that is the inverse of 'x'
