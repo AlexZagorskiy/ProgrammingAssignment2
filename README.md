@@ -8,11 +8,11 @@ xx  ## generated matrix
 
 yy<-makeCacheMatrix(x) ##caching functions
 
-yy$set(x)   ## setting matrix x
+yy$set(xx)   ## setting matrix x
 
 yy$get()
 
-x
+xx
 
 x_inv<-cacheSolve(yy) ##inversing for the first time
 
